@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Contact - ETEQINNOVATION</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <style>
+      :root {
+        --header-height: 4rem;
+        --primary-color: #c5a327;
+        --secondary-color: #333;
+        --text-color: #333;
+        --bg-color: #f5f5f5;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      .navbar-container {
+        background: linear-gradient(135deg, var(--primary-color), #917e15);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo i {
+        font-size: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .company-name {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--secondary-color);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      .contact-header {
+        background: linear-gradient(135deg, var(--primary-color), #d4b234);
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+
+      .contact-title {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+      }
+
+      .contact-subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .contact-content {
+        width: 90%;
+        max-width: 600px;
+        margin: 4rem auto;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .form-group {
+        width: 100%;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 0.75rem;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: #a68920;
+      }
+
+      .social-contact {
+        margin-top: 3rem;
+        text-align: center;
+      }
+
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icons a {
+        color: var(--secondary-color);
+        font-size: 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      footer {
+        background: linear-gradient(135deg, var(--secondary-color), #555);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 600px) {
+        .contact-content {
+          width: 90%;
+          margin: 2rem auto;
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-container">
+      <nav class="navbar">
+        <div class="logo">
+          <i class="fas fa-code"></i>
+          <span class="company-name">ETEQINNOVATION</span>
+        </div>
+        <div class="nav-links">
+          <a href="home.html">Home</a>
+          <a href="Portfoliopage.html">Portfolio</a>
+          <a href="services.html">Services</a>
+        </div>
+      </nav>
+    </div>
+
+    <header class="contact-header">
+      <h1 class="contact-title">Contact Us</h1>
+      <p class="contact-subtitle">
+        Have a project in mind? Let's collaborate and bring your ideas to life.
+      </p>
+    </header>
+
+    <div class="contact-content">
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your Name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+
+    <div class="social-contact">
+      <h3>Connect With Us</h3>
+      <div class="social-icons">
+        <a href="https://wa.me/+2330592767721" target="_blank"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/share/19jeCFMy5b/?mibextid=wwXIfr"
+          target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://x.com/hxzeki?s=21" target="_blank"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a href="https://github.com/TheTechBr0" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="www.linkedin.com/in/
+        eteq-innovation-the-tech-bro-31ab81348
+        "
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/thetechbro01?igsh=MnZ0NDVhOXBldjVs&utm_source=qr"
+          target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 ETEQINNOVATION. All rights reserved.</p>
+    </footer>
+
+    <script>
+      (function () {
+        emailjs.init("Ks0z1eNYxmfbf_F7J");
+      })();
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          emailjs.sendForm("service_yit7iqs", "template_8az30q6", this).then(
+            function () {
+              alert("Message sent successfully!");
+              event.target.reset();
+            },
+            function (error) {
+              console.error("Email send failed:", error);
+              alert("Failed to send message. Please try again.");
+            }
+          );
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>ETEQINNOVATION - Creative Portfolio</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --header-height: 4rem;
+        --primary-color: #c5a327;
+        --secondary-color: #333;
+        --text-color: #333;
+        --bg-color: #f5f5f5;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      .navbar-container {
+        background: linear-gradient(135deg, var(--primary-color), #917e15);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo i {
+        font-size: 2rem;
+        color: var(--secondary-color);
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover i {
+        transform: rotate(360deg);
+      }
+
+      .company-name {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--secondary-color);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      .hero-section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, var(--primary-color), #917e15);
+        color: var(--secondary-color);
+        text-align: center;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        color: rgba(51, 51, 51, 0.8);
+      }
+
+      .portfolio-section {
+        padding: 10rem 2rem 6rem;
+        margin-top: 4rem;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        background: linear-gradient(135deg, var(--primary-color), #d4b234);
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--secondary-color);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .project-card {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+      }
+
+      .project-category {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .project-details {
+        text-align: center;
+      }
+
+      .skills-section {
+        background-color: var(--bg-color);
+        padding: 6rem 2rem;
+        text-align: center;
+      }
+
+      .skills-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .skill-tag {
+        background-color: var(--card-bg);
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid var(--primary-color);
+      }
+
+      .skill-tag:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        transform: scale(1.1);
+      }
+
+      .project-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .project-links a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        transition: color 0.3s ease;
+      }
+
+      .project-links a:hover {
+        color: var(--primary-color);
+      }
+
+      footer {
+        background: linear-gradient(135deg, var(--secondary-color), #555);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .social-links {
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-5px);
+      }
+
+      @media screen and (max-width: 767px) {
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-container">
+      <nav class="navbar">
+        <div class="logo">
+          <i class="fas fa-code"></i>
+          <span class="company-name">ETEQINNOVATION</span>
+        </div>
+        <div class="nav-links">
+          <a href="home.html">Home</a>
+          <a href="service.html">service</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="hero-section" id="home">
+      <div class="hero-content">
+        <h1 class="hero-title">Creative Digital Solutions</h1>
+        <p class="hero-subtitle">
+          Transforming Ideas into Innovative Digital Experiences
+        </p>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="portfolio">
+      <h2 class="section-title">Portfolio Projects</h2>
+      <div class="project-grid" id="projectGrid">
+        <!-- Projects will be dynamically added here -->
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <h2 class="section-title">Skills & Technologies</h2>
+      <div class="skills-grid">
+        <div class="skill-tag">Web Development</div>
+        <div class="skill-tag">Graphics Design</div>
+        <div class="skill-tag">Video Editing</div>
+        <div class="skill-tag">UI/UX Design</div>
+        <div class="skill-tag">React.js</div>
+        <div class="skill-tag">Node.js</div>
+        <div class="skill-tag">Adobe Creative Suite</div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 ETEQINNOVATION. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const projects = [
+        {
+          title: "Web Development Projects",
+          category: "Web Development",
+          description: "Explore my web development projects on GitHub",
+          projectLink: "https://github.com/TheTechBr0",
+          icon: "fab fa-github",
+        },
+        {
+          title: "Graphics Design Portfolio",
+          category: "Graphics Design",
+          description:
+            "Collection of graphic design works and brand identities",
+          projectLink:
+            "https://www.instagram.com/thetechbro01?igsh=MnZ0NDVhOXBldjVs&utm_source=qr",
+          icon: "fas fa-palette",
+        },
+        {
+          title: "Video Editing Showcase",
+          category: "Video Editing",
+          description: "Latest video editing projects and creative content",
+          projectLink: "https://www.youtube.com/@Eztechh416",
+          icon: "fas fa-film",
+        },
+      ];
+
+      function renderProjects() {
+        const projectGrid = document.getElementById("projectGrid");
+        projects.forEach((project) => {
+          const projectCard = document.createElement("div");
+          projectCard.classList.add("project-card");
+          projectCard.innerHTML = `
+            <img src="${project.image}" alt="${
+            project.title
+          }" class="project-image">
+            <div class="project-details">
+              <span class="project-category">${project.category}</span>
+              <h3>${project.title}</h3>
+              <p>${project.description}</p>
+              <div class="project-links">
+                ${
+                  project.projectLink
+                    ? `
+                  <a href="${project.projectLink}" target="_blank">
+                    <i class="${project.icon}"></i> View Projects
+                  </a>
+                `
+                    : ""
+                }
+              </div>
+            </div>
+          `;
+          projectGrid.appendChild(projectCard);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", renderProjects);
+    </script>
+  </body>
+</html>

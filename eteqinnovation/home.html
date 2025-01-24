@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+    <title>ETEQINNOVATION - Charles Ezechukwu</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --header-height: 4rem; 
+        --primary-color: #c5a327;
+        --secondary-color: #333;
+        --text-color: #333;
+        --bg-color: #f5f5f5;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color 0.3s ease;
+      }
+
+      .navbar-container {
+        background: linear-gradient(135deg, var(--primary-color), #917e15);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      .logo i {
+        font-size: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .company-name {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--secondary-color);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), #d4b234);
+        padding: 10rem 2rem 6rem;
+        margin-top: 4rem;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+
+      .hero-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        padding: 0 1rem; /* Add this */
+        flex-wrap: wrap;
+      }
+
+      .hero-text {
+        flex: 1;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-subtitle {
+        font-size: 1.8rem;
+        color: #555;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-description {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .profile-container {
+        position: relative;
+        width: 600px;
+        height: 600px;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+        overflow: hidden;
+      }
+
+      .profile-container:hover {
+        transform: scale(1.05) rotate(5deg);
+      }
+
+      .profile-image {
+        width: 100%; /* Change from 120% to 100% */
+        height: 100%; /* Change from 115% to 100% */
+        border-radius: 60%;
+        object-fit: cover;
+      }
+
+      .btn-container {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: all 0.5s;
+      }
+
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      .btn-secondary {
+        background-color: white;
+        color: var(--secondary-color);
+        border: 2px solid var(--secondary-color);
+      }
+
+      .section {
+        padding: 6rem 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--secondary-color);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background-color: var(--card-bg);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 400%;
+        height: 400%;
+        background: radial-gradient(
+          circle,
+          rgb(212, 178, 52, 0.3) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .card:hover::before {
+        opacity: 1;
+      }
+
+      .card i {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover i {
+        transform: scale(1.1) rotate(10deg);
+      }
+
+      footer {
+        background: linear-gradient(135deg, var(--secondary-color), #555);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .social-links {
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: var(--primary-color);
+        transform: translateY(-5px);
+      }
+
+      /* Base responsive styles */
+:root {
+  --header-height: 4rem; /* For consistent header height across devices */
+}
+
+/* Tablet Styles (iPad) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .hero-section {
+    padding: 8rem 1.5rem 4rem;
+  }
+  
+  .profile-container {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Styles (iPhone, Android) */
+@media screen and (max-width: 767px) {
+  .hero-section {
+    padding: 6rem 1rem 3rem;
+  }
+  
+  .profile-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+  }
+  
+  .btn-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section {
+    padding: 4rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .navbar-container {
+    padding: 0.5rem;
+  }
+  
+  .company-name {
+    font-size: 1.2rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 320px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .profile-container {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Landscape Mode */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    height: auto;
+    padding: 5rem 1rem 2rem;
+  }
+  
+  .hero-content {
+    flex-direction: row;
+  }
+  
+  .profile-container {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Fix for larger screens */
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .hero-section {
+    padding: 12rem 2rem 8rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .btn:hover {
+    transform: none;
+  }
+  
+  .card:hover {
+    transform: none;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="navbar-container">
+      <nav class="navbar">
+        <div class="logo">
+          <i class="fas fa-code"></i>
+          <span class="company-name">ETEQINNOVATION</span>
+        </div>
+        <div class="nav-links">
+          <a href="home.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="Portfoliopage.html">Portfolio</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+
+    <section class="hero-section" id="home">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">CHARLES EZECHUKWU</h1>
+          <h2 class="hero-subtitle">CEO and Founder</h2>
+          <p class="hero-description">Pioneering Tomorrow's Technology Today</p>
+          <div class="btn-container">
+            <a href="MyCv.pdf" download="CharlesEzechukwu_Cv.pdf" class="btn btn-primary">
+              View CV
+          </a>
+            </button>
+            <a href="mailto:eteqinnovation@gmail.com" class="btn btn-secondary"
+              >Get in Touch</a
+            >
+          </div>
+        </div>
+        <div class="profile-container">
+          <img
+            src="c:\Users\HP\OneDrive\Desktop\PHOTOM.jpg"
+            alt="Charles Ezechukwu"
+            class="profile-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <h2 class="section-title">Our Services</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Web Development</h3>
+          <p>
+            Custom websites and web applications built with the latest
+            technologies.
+          </p>
+        </div>
+        <div class="card">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Mobile Development</h3>
+          <p>
+            Native and cross-platform mobile applications for iOS and Android.
+          </p>
+        </div>
+        <div class="card">
+          <i class="fas fa-server"></i>
+          <h3>Cloud Solutions</h3>
+          <p>Scalable cloud infrastructure and deployment services.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fab fa-html5"></i>
+          <h3>Frontend Development</h3>
+          <p>HTML5, CSS3, JavaScript, React, Next.js</p>
+        </div>
+        <div class="card">
+          <i class="fab fa-node-js"></i>
+          <h3>Backend Development</h3>
+          <p>Node.js, Python, Java, PHP</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-database"></i>
+          <h3>Database Management</h3>
+          <p>MySQL, MongoDB</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-cloud"></i>
+          <h3>Cloud Services</h3>
+          <p>AWS, Azure, Google Cloud</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 ETEQINNOVATION. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/19jeCFMy5b/?mibextid=wwXIfr"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://github.com/TheTechBr0"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="https://x.com/hxzeki?s=21"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </footer>
+
+    <script>
+      function downloadCV() {
+    // Path to your CV file
+    const cvPath = "MyCv.pdf";
+    
+    // Create an anchor element
+    const link = document.createElement("a");
+    link.href = cvPath;
+    
+    // Set the file name that will appear when downloading
+    link.download = "CharlesEzechukwu_Cv.pdf";
+    
+    // Error handling in case the file doesn't exist
+    fetch(cvPath)
+        .then(response => {
+            if (response.ok) {
+                // If file exists, trigger download
+                link.click();
+            } else {
+                console.error('Response status:', response.status);
+                console.error('Response status text:', response.statusText);
+                throw new Error(`File not found - Status: ${response.status}`);
+            }
+        })
+        .catch(error => {
+            console.error('Detailed error:', error);
+            console.error('Attempted to access file at:', new URL(cvPath, window.location.href).href);
+           });
+}
+   // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Intersection Observer for fade-in animation
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in");
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      document.querySelectorAll(".card").forEach((card) => {
+        observer.observe(card);
+      });
+
+      // Dynamic color change on scroll
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+        const maxScroll =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = scrollPosition / maxScroll;
+
+        const startColor = [255, 215, 0]; // #ffd700
+        const endColor = [255, 236, 128]; // #ffec80
+
+        const currentColor = startColor.map((start, index) => {
+          return Math.round(
+            start + (endColor[index] - start) * scrollPercentage
+          );
+        });
+
+        document.querySelector(
+          ".navbar-container"
+        ).style.background = `linear-gradient(135deg, rgb(${currentColor.join(
+          ","
+        )}), #ffec80)`;
+        // Add this to your existing script
+document.addEventListener('DOMContentLoaded', function() {
+    // Prevent zoom on double tap for iOS
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+    // Handle mobile menu
+    const navLinks = document.querySelector('.nav-links');
+    const menuButton = document.createElement('button');
+    menuButton.className = 'menu-button d-md-none';
+    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+    
+    if (window.innerWidth <= 768) {
+        document.querySelector('.navbar').insertBefore(menuButton, navLinks);
+        navLinks.style.display = 'none';
+        
+        menuButton.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'none' ? 'flex' : 'none';
+        });
+    }
+});
+
+// Add smooth scrolling behavior that works on iOS
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            const headerOffset = 60;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+      });
+    </script>
+  </body>
+</html>

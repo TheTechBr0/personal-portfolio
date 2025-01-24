@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Services - ETEQINNOVATION</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Keeping the same root variables and base styles */
+      :root {
+        --header-height: 4rem;
+        --primary-color: #c5a327;
+        --secondary-color: #333;
+        --text-color: #333;
+        --bg-color: #f5f5f5;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      /* Reusing navbar styles */
+      .navbar-container {
+        background: linear-gradient(135deg, var(--primary-color), #917e15);
+        padding: 1rem 2rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Reusing logo and nav-links styles */
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo i {
+        font-size: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .company-name {
+        font-weight: bold;
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--secondary-color);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      /* Services specific styles */
+      .services-header {
+        background: linear-gradient(135deg, var(--primary-color), #d4b234);
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+
+      .services-title {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+      }
+
+      .services-subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 4rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .service-card {
+        background: var(--card-bg);
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+      }
+      footer {
+        background: linear-gradient(135deg, var(--secondary-color), #555);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .service-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+      }
+
+      .service-title {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+      }
+
+      .service-description {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .service-features {
+        list-style: none;
+        margin-top: 1rem;
+      }
+
+      .service-features li {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .service-features i {
+        color: var(--primary-color);
+      }
+
+      /* Responsive styles */
+      @media screen and (max-width: 768px) {
+        .services-header {
+          padding: 6rem 1rem 3rem;
+        }
+
+        .services-title {
+          font-size: 2rem;
+        }
+
+        .services-grid {
+          padding: 2rem 1rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .services-title {
+          font-size: 1.8rem;
+        }
+
+        .service-card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar-container">
+      <nav class="navbar">
+        <div class="logo">
+          <i class="fas fa-code"></i>
+          <span class="company-name">ETEQINNOVATION</span>
+        </div>
+        <div class="nav-links">
+          <a href="home.html">Home</a>
+          <a href="Portfoliopage.html">Portfolio</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+
+    <header class="services-header">
+      <h1 class="services-title">Our Services</h1>
+      <p class="services-subtitle">
+        Delivering cutting-edge technology solutions to transform your business
+      </p>
+    </header>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="fas fa-laptop-code service-icon"></i>
+        <h2 class="service-title">Web Development</h2>
+        <p class="service-description">
+          Custom websites and web applications built with the latest
+          technologies.
+        </p>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i>Responsive Design</li>
+          <li><i class="fas fa-check"></i>E-commerce Solutions</li>
+          <li><i class="fas fa-check"></i>Content Management Systems</li>
+          <li><i class="fas fa-check"></i>API Integration</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-mobile-alt service-icon"></i>
+        <h2 class="service-title">Mobile Development</h2>
+        <p class="service-description">
+          Native and cross-platform mobile applications for iOS and Android.
+        </p>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i>iOS Development</li>
+          <li><i class="fas fa-check"></i>Android Development</li>
+          <li><i class="fas fa-check"></i>React Native Apps</li>
+          <li><i class="fas fa-check"></i>App Store Optimization</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-server service-icon"></i>
+        <h2 class="service-title">Cloud Solutions</h2>
+        <p class="service-description">
+          Scalable cloud infrastructure and deployment services.
+        </p>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i>Cloud Migration</li>
+          <li><i class="fas fa-check"></i>AWS Services</li>
+          <li><i class="fas fa-check"></i>Azure Solutions</li>
+          <li><i class="fas fa-check"></i>Cloud Security</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-pencil-ruler service-icon"></i>
+        <h2 class="service-title">Graphics Design</h2>
+        <p class="service-description">
+          Professional graphic design services for all your visual needs.
+        </p>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i>Logo Design</li>
+          <li><i class="fas fa-check"></i>Brand Identity</li>
+          <li><i class="fas fa-check"></i>Marketing Materials</li>
+          <li><i class="fas fa-check"></i>Social Media Graphics</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-palette service-icon"></i>
+        <h2 class="service-title">UI Design</h2>
+        <p class="service-description">
+          Creating beautiful and intuitive user interfaces for digital products.
+        </p>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i>User Interface Design</li>
+          <li><i class="fas fa-check"></i>Wireframing</li>
+          <li><i class="fas fa-check"></i>Prototyping</li>
+          <li><i class="fas fa-check"></i>Design Systems</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <i class="fas fa-code-branch service-icon"></i>
+        <h2 class="service-title">DevOps Services</h2>
+        <p class="service-description">
+          Streamline your development and deployment processes.
+        </p>
+        <ul class="service-features">
+          <li><i class="fas fa-check"></i>CI/CD Implementation</li>
+          <li><i class="fas fa-check"></i>Infrastructure as Code</li>
+          <li><i class="fas fa-check"></i>Container Orchestration</li>
+          <li><i class="fas fa-check"></i>Monitoring Solutions</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 ETEQINNOVATION. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Add smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
